@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/layout :: head"></head>
+<body>
+
+	<header th:replace="layouts/layout :: header"></header>
+
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col-12">
+
+				<div class="card bg-light">
+					<div class="card-header"> <div  th:text="${titulo}" class="text-info h2"></div> </div>
+					<div class="card-body">
+
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nombre</th>
+									<th>Apellido</th>
+									<th>Email</th>
+									<th>Fecha</th>
+									<th>Editar</th>
+									<th>Eliminar</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="cliente: ${clientes}">
+									<td><a class="btn btn-info btn-sm btn-block" th:href="@{/ver/} + ${cliente.id}" th:text="${cliente.id}"></a></td>
+									<td th:text="${cliente.nombre}"></td>
+									<td th:text="${cliente.apellido}"></td>
+									<td th:text="${cliente.email}"></td>
+									<td th:text="${cliente.createAt}"></td>
+									<td><a class="btn btn-primary btn-sm"
+										th:href="@{/form/} + ${cliente.id}" th:text="'Editar'"></a></td>
+									<td><a class="btn btn-danger btn-sm"
+										th:href="@{/eliminar/} + ${cliente.id}" th:text="'Eliminar'"
+										onclick="return confirm('¿Está seguro que quiere eliminar?')">
+
+									</a></td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<nav th:replace="paginator-nav :: paginator"></nav>
+
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layouts/layout :: footer"></footer>
+
+
+
+
+</body>
+</html>
