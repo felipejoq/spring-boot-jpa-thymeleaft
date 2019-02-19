@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaft.org">
+<head th:replace="layouts/layout :: head"></head>
+<body>
+
+	<header th:replace="layouts/layout :: header"></header>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-6 m-auto text-center">
+
+				<div class="card mt-5 bg-danger">
+					<div class="card-header text-light"><i class="fas fa-exclamation-triangle"></i> ERROR: Recurso Denegado</div>
+					<div class="card-body text-light">
+						
+						<p class="h4">¡Lo sentimos <span th:text="${#authentication.name}"></span>!</p>
+						<p class="">No tienes permisos para acceder a este recurso.</p>
+						<p>[ERROR 403]</p>
+						
+						<a th:href="@{/listar}" class="btn btn-outline-light btn-block">
+						<i class="fas fa-arrow-alt-circle-left"></i> Volver
+						</a>
+						
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<footer th:replace="layouts/layout :: footer"></footer>
+
+</body>
+</html>
